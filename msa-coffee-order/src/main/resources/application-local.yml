@@ -1,0 +1,40 @@
+server:
+  port: 8176
+
+logging:
+  level:
+    org.springframework.jdbc: debug
+    com.example.msa: debug
+    com.example.msa.restclient: debug
+
+spring:
+  application:
+    name: msa-coffee-order
+
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    sql-script-encoding: UTF-8
+
+  h2:
+    console:
+      enabled: true
+
+mybatis:
+  type-aliases-package: com.example.msa.repository
+  mapper-locations: classpath:sql/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8170/eureka/
+  instance:
+    prefer-ip-address: true
+
+msa:
+  coffee:
+    member: msa-coffee-member
