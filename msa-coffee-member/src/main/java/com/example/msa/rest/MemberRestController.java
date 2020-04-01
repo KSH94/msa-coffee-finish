@@ -15,7 +15,7 @@ public class MemberRestController {
 
     private final MemberService memberService;
 
-    @ApiOperation(value = "save member")
+    @ApiOperation(value = "save member") //Api 의 메타데이터
     @PostMapping("/api/v1/members")
     public Long save(@RequestBody MemberSaveRequestDto requestDto) {
         return memberService.save(requestDto);
