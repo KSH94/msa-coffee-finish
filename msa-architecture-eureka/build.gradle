@@ -17,7 +17,7 @@ dependencyManagement {
 }
 
 dependencies {
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server' //Eureka 서버를 위해 필요
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
