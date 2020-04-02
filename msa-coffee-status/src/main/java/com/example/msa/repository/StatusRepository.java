@@ -6,7 +6,6 @@ import java.util.List;
 
 @Mapper
 public interface StatusRepository {
-    Long Save(Status status);
+    void insertCoffeeOrderStatus(Status status);
     List<Status> findAll();
-    Status findById(Long id);
 }

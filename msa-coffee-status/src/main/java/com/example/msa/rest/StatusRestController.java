@@ -1,11 +1,14 @@
 package com.example.msa.rest;
 
-import com.example.msa.rest.dto.StatusResponseDto;
-import com.example.msa.service.StatusService;
+import com.example.msa.repository.Status;
+import com.example.msa.repository.StatusRepository;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -14,17 +17,12 @@ import java.util.List;
 @RestController
 public class StatusRestController {
 
-    private final StatusService statusService;
+    @Autowired
+    StatusRepository statusRepository;
 
     @ApiOperation(value = "find all status")
-    @GetMapping("/api/v1/status")
-    public List<StatusResponseDto> findAll() {
-        return statusService.findAll();
-    }
-
-    @ApiOperation(value = "find status by id")
-    @GetMapping("/api/v1/status/{id}")
-    public StatusResponseDto findById(@PathVariable("id") Long id) {
-        return statusService.findById(id);
+    @GetMapping("/api/v1/status/")
+    public List<Status> findAll() {
+        return statusRepository.findAll();
     }
 }
