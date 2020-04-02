@@ -1,5 +1,6 @@
 package com.example.msa.service;
 
+import com.example.msa.messageq.KafkaProducer;
 import com.example.msa.repository.Order;
 import com.example.msa.repository.OrderRepository;
 import com.example.msa.rest.dto.OrderResponseDto;
@@ -17,6 +18,7 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final MemberFeignClient memberFeignClient;
+    private final KafkaProducer kafkaProducer;
 
     public Integer save(OrderSaveRequestDto requestDto) {
         if (memberFeignClient.findByParam(requestDto.getMemberName()) == null) {
@@ -24,6 +26,9 @@ public class OrderService {
         }
         Order order = requestDto.toEntity();
         orderRepository.save(order);
+
+        kafkaProducer.send("coffee", order);
+
         return order.getOrderNo();
     }
 
