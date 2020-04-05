@@ -2,6 +2,7 @@ package com.example.msa.rest;
 
 import com.example.msa.repository.Status;
 import com.example.msa.repository.StatusRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ public class StatusRestController {
 
     @ApiOperation(value = "find all status")
     @GetMapping("/api/v1/status/")
+    @HystrixCommand
     public List<Status> findAll() {
         return statusRepository.findAll();
     }

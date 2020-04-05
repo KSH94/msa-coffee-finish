@@ -33,5 +33,4 @@ public class KafkaConsumerConfig {
         kafkaListenerContainerFactory.setConsumerFactory(consumerFactory());
         return kafkaListenerContainerFactory;
     }
-
 }
