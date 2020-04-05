@@ -1,0 +1,17 @@
+server:
+  port: 9999
+
+spring:
+  application:
+    name: msa-architecture-turbine-server
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8170/eureka/
+  instance:
+    prefer-ip-address: true
+
+turbine:
+  appConfig: msa--coffee-order, msa-coffee-member, msa-coffee-status
+  clusterNameExpression: new String("default")
