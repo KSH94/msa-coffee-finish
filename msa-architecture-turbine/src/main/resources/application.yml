@@ -13,5 +13,5 @@ eureka:
     prefer-ip-address: true
 
 turbine:
-  appConfig: msa--coffee-order, msa-coffee-member, msa-coffee-status
+  appConfig: msa-coffee-order, msa-coffee-member, msa-coffee-status
   clusterNameExpression: new String("default")
